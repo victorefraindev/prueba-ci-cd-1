@@ -46,4 +46,12 @@ describe('API Endpoints', () => {
     expect(response.body.body).toEqual(testData);
   });
 
+  test('GET /api/time should return current server time', async () => {
+    const response = await request(app).get('/api/time');
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty('now');
+    expect(response.body).toHaveProperty('timezone');
+    expect(response.body).toHaveProperty('unix');
+  });
+
 });

@@ -11,7 +11,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+git
     strategy:
       matrix:
         node-version: [24.x]

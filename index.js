@@ -90,6 +90,7 @@ app.get('/', (req, res) => {
             <div class="endpoints">
                 <span class="badge">GET /api/health</span>
                 <span class="badge">GET /api/items</span>
+                <span class="badge">GET /api/time</span>
                 <span class="badge">POST /api/echo</span>
             </div>
         </div>
@@ -130,6 +131,15 @@ app.post('/api/echo', (req, res) => {
     message: 'Data received successfully',
     receivedAt: new Date().toISOString(),
     body: req.body
+  });
+});
+
+// 6. New Endpoint: Server Time
+app.get('/api/time', (req, res) => {
+  res.json({
+    now: new Date().toISOString(),
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    unix: Date.now()
   });
 });
 
