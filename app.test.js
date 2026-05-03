@@ -54,4 +54,12 @@ describe('API Endpoints', () => {
     expect(response.body).toHaveProperty('unix');
   });
 
+  test('GET /api/users/random should return a random user object', async () => {
+    const response = await request(app).get('/api/users/random');
+    expect(response.statusCode).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.user).toHaveProperty('username');
+    expect(response.body.user).toHaveProperty('role');
+  });
+
 });
