@@ -91,6 +91,7 @@ app.get('/', (req, res) => {
                 <span class="badge">GET /api/health</span>
                 <span class="badge">GET /api/items</span>
                 <span class="badge">GET /api/time</span>
+                <span class="badge">GET /api/users/random</span>
                 <span class="badge">POST /api/echo</span>
             </div>
         </div>
@@ -141,6 +142,17 @@ app.get('/api/time', (req, res) => {
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     unix: Date.now()
   });
+});
+
+// 7. New Endpoint: Random User
+app.get('/api/users/random', (req, res) => {
+  const users = [
+    { id: 101, username: 'cyber_pioneer', role: 'Architect' },
+    { id: 102, username: 'neo_coder', role: 'Developer' },
+    { id: 103, username: 'data_ghost', role: 'Analyst' }
+  ];
+  const randomUser = users[Math.floor(Math.random() * users.length)];
+  res.json({ success: true, user: randomUser });
 });
 
 if (require.main === module) {
